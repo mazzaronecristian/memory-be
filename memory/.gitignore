@@ -230,6 +230,6 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 
-# Appsettings develpment
+# Appsettings development
 appsettings.[Dd]evelopment.json
 .idea/.idea.memory/.idea
