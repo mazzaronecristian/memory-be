@@ -2,9 +2,10 @@ namespace memory.DTO
 {
   public class UserDTO
   {
-    public virtual int id { get; set; }
-    public virtual string username { get; set; }
-    public virtual string email { get; set; }
-    public virtual string password { get; set; }
+    public uint id { get; set; }
+    public string username { get; set; }
+    public string email { get; set; }
+    public string password { get; set; }
+    public string role { get; set; }
   }
 }

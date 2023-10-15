@@ -16,6 +16,7 @@ namespace memory.ClassMaps
       });
       Property(x => x.username, x =>
       {
+        x.UniqueKey("username");
         x.Length(50);
         x.Type(NHibernateUtil.String);
         x.NotNullable(true);
@@ -32,6 +33,13 @@ namespace memory.ClassMaps
         x.Type(NHibernateUtil.String);
         x.NotNullable(true);
       });
+      Property(x => x.role, x =>
+      {
+        x.Length(4000);
+        x.Type(NHibernateUtil.String);
+        x.NotNullable(true);
+      });
+
       Table("users");
     }
   }

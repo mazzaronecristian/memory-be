@@ -24,13 +24,20 @@ namespace memory.Controllers
 
     private readonly ISmartConfiguration _config;
 
+    public LoginController(ILogger<LoginController> logger, ISmartDBConnection dbConnection, ISmartConfiguration config)
+    {
+      _logger = logger;
+      _dbConnection = dbConnection;
+      _config = config;
+    }
+
     [HttpPost]
     public ApiResponse<string> Login([FromBody] LoginRequestDTO request)
     {
       try
       {
-        string username = request.Username;
-        string password = request.Password;
+        string username = request.username;
+        string password = request.password;
 
         User user = _dbConnection.GetData<User>()
         .FirstOrDefault(x => x.username.ToLower().Equals(username.ToLower()) &&
@@ -50,19 +57,18 @@ namespace memory.Controllers
             60 * 24, //DURATA TOKEN
             null,
             new List<SmartJWTClaim>() {
-              new SmartJWTClaim("ID", user.id.ToString())
+              new SmartJWTClaim("ID", user.id.ToString()),
+              new SmartJWTClaim("unique_name", user.username)
             }
         );
 
+        return new ApiResponse<string>(newToken);
       }
-
-
       catch (System.Exception e)
       {
         _logger.LogError(e.Message);
         throw;
       }
-      return new ApiResponse<string>();
     }
   }
 
