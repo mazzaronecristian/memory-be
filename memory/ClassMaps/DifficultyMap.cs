@@ -22,12 +22,12 @@ namespace memory.ClassMaps
             });
             Property(x => x.totTime, x =>
             {
-                x.Type(NHibernateUtil.UInt32);
+                x.Type(NHibernateUtil.Int32);
                 x.NotNullable(true);
             });
             Property(x => x.flipTime, x =>
             {
-                x.Type(NHibernateUtil.UInt32);
+                x.Type(NHibernateUtil.Int32);
                 x.NotNullable(true);
             });
             Table("difficulties");

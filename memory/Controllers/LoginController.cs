@@ -48,7 +48,6 @@ namespace memory.Controllers
           return ApiResponse<string>.FromErrorCode("LOGIN_USER_OR_PASSWORD_INVALID");
         }
 
-        //TODO: studiare il token jwt e implementarlo a frontend
         string newToken = SmartJWTEngine.GenerateToken(
             _config.GetConfiguration("Jwt:Issuer"),
             _config.GetConfiguration("Jwt:Audience"),
@@ -58,7 +57,8 @@ namespace memory.Controllers
             null,
             new List<SmartJWTClaim>() {
               new SmartJWTClaim("ID", user.id.ToString()),
-              new SmartJWTClaim("unique_name", user.username)
+              new SmartJWTClaim("unique_name", user.username),
+              new SmartJWTClaim("role", user.role)
             }
         );
 

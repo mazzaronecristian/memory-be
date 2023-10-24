@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using SmartFrame.ASPNETCore;
 using SmartFrame.ASPNETCore.Database;
 using SmartFrame.ASPNETCore.Error;
+using SmartFrame.ASPNETCore.JWT;
 using SmartFrame.ASPNETCore.Mapper;
 
 namespace memory
@@ -20,16 +21,15 @@ namespace memory
         public override string AngularApplicationFolder { get { return "public"; } }
         public override string AppVersion { get { return "1.0.0"; } }
 
-        //TODO: studiare implementazione dei jwt
         /**
         * JWT
         */
-        // public override SmartJWTConfiguration JWTConfiguration => new SmartJWTConfiguration()
-        // {
-        //     Issuer = Configuration.GetConfiguration("Jwt:Issuer"),
-        //     Audience = Configuration.GetConfiguration("Jwt:Issuer"),
-        //     CryptoKey = Configuration.GetConfiguration("Jwt:Key")
-        // }
+        public override SmartJWTConfiguration JWTConfiguration => new SmartJWTConfiguration()
+        {
+            Issuer = Configuration.GetConfiguration("Jwt:Issuer"),
+            Audience = Configuration.GetConfiguration("Jwt:Issuer"),
+            CryptoKey = Configuration.GetConfiguration("Jwt:Key")
+        };
 
         //TODO: studiare implementazione della crittografia
         /**

@@ -20,12 +20,12 @@ namespace memory.ClassMaps
             });
             Property(x => x.misses, x =>
             {
-                x.Type(NHibernateUtil.UInt32);
+                x.Type(NHibernateUtil.Int32);
                 x.NotNullable(true);
             });
             Property(x => x.moves, x =>
             {
-                x.Type(NHibernateUtil.UInt32);
+                x.Type(NHibernateUtil.Int32);
                 x.NotNullable(true);
             });
             ManyToOne(x => x.relatedUser, x =>
